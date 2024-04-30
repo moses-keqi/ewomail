@@ -1,0 +1,5 @@
+user = root
+password = 123456
+hosts = mysql
+dbname = ewomail  
+query = SELECT destination FROM i_aliases WHERE source='%s'

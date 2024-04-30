@@ -1,0 +1,5 @@
+user = root
+password = xLnHamLbN9RD
+hosts = mysql
+dbname = ewomail  
+query = SELECT 1 FROM i_domains WHERE name='%s' and active=1

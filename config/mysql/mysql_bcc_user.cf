@@ -1,0 +1,5 @@
+user = root
+password = xLnHamLbN9RD
+hosts = mysql
+dbname = ewomail  
+query = SELECT to_email FROM i_bcc_user WHERE source='%s'
