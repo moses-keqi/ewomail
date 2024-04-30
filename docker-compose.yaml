@@ -1,0 +1,41 @@
+version: '3.7'
+services:
+  mail:
+    #    image: bestwu/ewomail:latest
+    image: moese/ewomail:1.0.1
+    hostname: mail.learning.com
+    container_name: learning
+    restart: always
+    platform: linux/x86_64
+    environment:
+      - "MYSQL_ROOT_PASSWORD=mysql"
+      - "MYSQL_MAIL_PASSWORD=mysql"
+      - "MAIL_DB_HOST=127.0.0.1"
+      - "MAIL_DB_ROOT_USERNAME=root"
+    ports:
+      - "25:25"
+      - "143:143"
+      - "587:587"
+      - "993:993"
+      - "109:109"
+      - "110:110"
+      - "465:465"
+      - "995:995"
+      - "9095:80"
+      - "9096:8080"
+    volumes:
+      - "./ewomail/data/vmail:/ewomail/mail"
+      - "./ewomail/data/rainloop:/ewomail/www/rainloop/data"
+      - "./ewomail/data/ssl/certs/:/etc/ssl/certs/"
+      - "./ewomail/data/ssl/private/:/etc/ssl/private/"
+      - "./ewomail/data/ssl/dkim/:/ewomail/dkim/"
+    networks:
+      application:
+        aliases:
+          - mail
+
+networks:
+  application:
+    external: true
+    name: commons
+    driver: bridge
